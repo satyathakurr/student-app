@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Search Student</h3>
+
+<form method="POST">
+    <input class="form-control mb-2" name="roll" placeholder="Enter Roll">
+    <button class="btn btn-primary">Search</button>
+</form>
+
+{% if result %}
+    <div class="alert alert-success mt-3">
+        Found: {{ result.name }} ({{ result.roll }})
+    </div>
+{% elif result is not none %}
+    <div class="alert alert-danger mt-3">
+        Student not found
+    </div>
+{% endif %}
+
+{% endblock %}

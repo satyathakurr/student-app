@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Edit Student</h3>
+
+<form method="POST">
+    <input class="form-control mb-2" name="name" value="{{ student.name }}">
+    <input class="form-control mb-2" name="roll" value="{{ student.roll }}">
+    <button class="btn btn-warning">Update</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+@app.route("/add", methods=["GET", "POST"])
+@login_required
+def add():
+    if request.method == "POST":
+        name = request.form["name"]
+        roll = request.form["roll"]
+
+        # ✅ ADD VALIDATION HERE
+        if not name or not roll:
+            flash("All fields are required!")
+            return redirect("/add")
+
+        try:
+            conn = get_db()
+            conn.execute(
+                "INSERT INTO students (name, roll) VALUES (?, ?)",
+                (name, roll)
+            )
+            conn.commit()
+            conn.close()
+
+            flash("Student added!")
+            return redirect("/")
+
+        except Exception as e:
+            print(e)
+            flash("Roll already exists!")
+
+    return render_template("add.html")

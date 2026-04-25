@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href="/add" class="btn btn-primary">Add Student</a>
+<a href="/search" class="btn btn-secondary">Search</a>
+
+<table class="table mt-3">
+<tr>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>Actions</th>
+</tr>
+
+{% for s in students %}
+<tr>
+    <td>{{ s.name }}</td>
+    <td>{{ s.roll }}</td>
+    <td>
+        <a href="/edit/{{ s.id }}" class="btn btn-warning btn-sm">Edit</a>
+        <a href="/delete/{{ s.id }}" class="btn btn-danger btn-sm">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
